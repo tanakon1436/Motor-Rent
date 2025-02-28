@@ -22,7 +22,7 @@ if (!$result) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รายชื่อลูกค้า</title>
+    <title>รายการรถ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -91,19 +91,19 @@ if (!$result) {
 </head>
 <body>
     <div class="container">
-        <h2>รายการลูกค้า</h2>
+        <h2>รายการรถ</h2>
         <div class="button-container">
-            <a href="insert_ts.php" class="button add-btn">+ เพิ่มลูกค้า</a>
+            <a href="insert_car.php" class="button add-btn">+ เพิ่มรถ</a>
         </div>
         <table style="border-radius: 10px; overflow: hidden; border: 1px solid #ddd;">
             <thead >
                 <tr>
-                    <th>รหัสลูกค้า</th>
-                    <th>ชื่อลูกค้า</th>
-                    <th>เบอร์โทร</th>
-                    <th>อีเมล</th>
-                    <th>เพศ</th>
-                    <th>ที่อยู่ลูกค้า</th>
+                    <th>รหัสรถ</th>
+                    <th>รุ่นรถ</th>
+                    <th>สถานะ</th>
+                    <th>รายละเอียด</th>
+                    <th>รูป</th>
+                    <th>เลขป้ายทะเบียน</th>
                     <th>แก้ไข</th>
                 </tr>
             </thead>
@@ -117,7 +117,7 @@ if (!$result) {
                     <td class="align-middle"><?= htmlspecialchars($row['car_plate']); ?></td>
                     <td class="align-middle"><img src="img/<?= htmlspecialchars($row['car_img']); ?>" alt="Car Image" style="max-width: 100px; height: auto;"></td>
                     <td class="align-middle">
-                        <a href="update_car.php?id=<?= $row['car_id']; ?>" class="btn btn-warning btn-sm"><img src="./img/edit2.svg" alt=""> </a>
+                        <a href="update_car.php?id=<?= $row['car_id']; ?>" class="btn btn-warning btn-sm"><img src="./img/edit2.svg" alt=""></a>
                         <a href="delete.php?id=<?= $row['car_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this record?');"><img src="./img/delete.svg" alt=""></a>
                     </td>
                     

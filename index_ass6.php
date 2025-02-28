@@ -37,7 +37,7 @@ if (!$result) {
     <table class='table table-striped table-success'>
         <thead>
             <tr>
-                <th>รหัสลูกค้า</th>
+                <th>customer_id</th>
                 <th>ชื่อลูกค้า</th>
                 <th>นามสกุลลูกค้า</th>
                 <th>ที่อยู่ลูกค้า</th>

@@ -38,7 +38,7 @@ if (!$result) {
         <thead>
             <tr>
                 <th>customer_id</th>
-                <th>ชื่อลูกค้า</th>
+                <th>Custname</th>
                 <th>นามสกุลลูกค้า</th>
                 <th>ที่อยู่ลูกค้า</th>
                 <th>เบอร์โทรลูกค้า</th>

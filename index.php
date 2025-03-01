@@ -73,12 +73,12 @@
             </div>
             <div class="col-md-2 button-container">
                 <div class="btn btn-danger btn-custom">
-                    <a href="index_c_mc.php">ข้อมูลการเช่า</a>
+                    <a href="index_rental.php">ข้อมูลการเช่า</a>
                 </div>
             </div>
         </div>
         <div class="ceo-pic text-center">
-            <img src="./img/ceoo.jpg" alt="">
+            <img src="./img/char.jpg" alt="">
         </div>
     </div>
 </body>

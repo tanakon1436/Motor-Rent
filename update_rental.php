@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <button type="submit" class="btn btn-warning btn-block">✅ อัปเดตข้อมูล</button>
-        <a href="rental.php" class="btn btn-secondary btn-block">⬅️ กลับ</a>
+        <a href="index_rental.php" class="btn btn-secondary btn-block">⬅️ กลับ</a>
     </form>
 </body>
 </html>

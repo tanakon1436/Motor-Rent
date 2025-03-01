@@ -60,7 +60,7 @@ if ($car_id) {
         </div>
         
         <label>ราคา(บาท/วัน): </label>
-        <input type="number" name="car_price" required class="form-control" value="<?= htmlspecialchars($car['car_price'] ?? '') ?>">
+        <input type="number" name="car_price" class="form-control" value="<?= htmlspecialchars($car['car_price'] ?? '') ?>" required>
 
         <div class="mb-2">
             <label class="form-label">อัปโหลดรูปใหม่</label>

@@ -9,7 +9,7 @@ $rep_id = isset($_GET['id']) ? $_GET['id'] : null;
 $repairment = null;
 
 if ($rep_id) {
-    // Use a prepared statement to prevent SQL injection
+    // ใช้ Prepared Statement ป้องกัน SQL Injection
     $stmt = $conn->prepare("SELECT * FROM repairment WHERE rep_id = ?");
     $stmt->bind_param("s", $rep_id);
     $stmt->execute();
@@ -35,7 +35,7 @@ $conn->close();
 </head>
 <body>
 <div class="container mt-3">
-    <h3>แก้ไขรายการแจ้งซ้อม</h3>
+    <h3>แก้ไขรายการแจ้งซ่อม</h3>
     <form method="POST" action="update_rep_mc_back.php">
         
         <div class="mb-2">
@@ -50,7 +50,7 @@ $conn->close();
 
         <div class="mb-2">
             <label class="form-label">รหัสพนักงาน</label>
-            <input type="text" name="emp_id" class="form-control" value="<?= htmlspecialchars($repairment['emp_id'] ?? '') ?>" readonly>
+            <input type="text" name="emp_id" class="form-control" value="<?= htmlspecialchars($repairment['emp_id'] ?? '') ?>" required>
         </div>
 
         <div class="mb-2">
@@ -63,20 +63,21 @@ $conn->close();
         </div>
 
         <div class="mb-2">
-            <label for="rep_price" class="form-label">ราคารายการแจ้งซ้อม</label>
-            <input type="text" name="rep_price" class="form-control" value="<?= htmlspecialchars($repairment['rep_price'] ?? '') ?>" readonly>
+            <label for="rep_price" class="form-label">ราคารายการแจ้งซ่อม</label>
+            <input type="text" name="rep_price" class="form-control" value="<?= htmlspecialchars($repairment['rep_price'] ?? '') ?>" required>
         </div>
 
         <div class="mb-2">
-            <label for="rep_detail" class="form-label">รายละเอียดการแจ้งซ้อม</label>
-            <input type="text" name="rep_detail" class="form-control" value="<?= htmlspecialchars($repairment['rep_detail'] ?? '') ?>" readonly>
+            <label for="rep_detail" class="form-label">รายละเอียดการแจ้งซ่อม</label>
+            <textarea name="rep_detail" class="form-control" required><?= htmlspecialchars($repairment['rep_detail'] ?? '') ?></textarea>
         </div>
                 
         <div class="mt-3">
-            <button type="submit" name="submit" class="btn btn-danger">Submit</button>
-            <a href="index_mc.php" class="btn btn-secondary">Back</a>
+            <button type="submit" name="submit" class="btn btn-primary">บันทึกการแก้ไข</button>
+            <a href="index_mc.php" class="btn btn-secondary">ย้อนกลับ</a>
         </div>
     </form>
 </div>
 </body>
 </html>
+

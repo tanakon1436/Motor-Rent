@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="ceo-pic text-center">
-            <img src="./img/ceoo.jpg" alt="">
+            <img src="./img/char.jpg" alt="">
         </div>
     </div>
 </body>

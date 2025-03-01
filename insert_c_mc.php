@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $car_plate = $_POST['car_plate'];
     $car_img = $_POST['car_img'];
 
-    $query = "INSERT INTO Car (car_name, car_status, car_detail, car_plate, car_img) 
+    $query = "INSERT INTO Car (car_name, car_status, car_detail, car_plate, car_img,car_price) 
               VALUES ('$car_name', '$car_status', '$car_detail', '$car_plate', '$car_img')";
 
     if (mysqli_query($connection, $query)) {
@@ -72,4 +72,4 @@ mysqli_close($connection);
 
 </body>
 </html>
-cdn.jsdelivr.net
+

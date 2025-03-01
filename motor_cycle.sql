@@ -16,7 +16,8 @@ CREATE TABLE Car (
     car_status ENUM('Available', 'Rented', 'In Maintenance') NOT NULL,
     car_detail VARCHAR(255),
     car_img VARCHAR(255),
-    car_plate VARCHAR(20) UNIQUE NOT NULL
+    car_plate VARCHAR(20) UNIQUE NOT NULL,
+    car_price DECIMAL NOT NULL 
 );
 
 CREATE TABLE Employee (

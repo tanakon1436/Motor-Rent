@@ -92,9 +92,15 @@ if (!$result) {
 <body>
     <div class="container">
         <h2>รายการพนักงาน</h2>
+        <div class="but" style="display:flex">
+
+        <div class="button-container">
+                <a href="index.php" class="button add-btn2" style="background:grey">< ย้อนกลับ</a>
+        </div>
         <div class="button-container">
             <a href="insert_emp_mc.php" class="button add-btn">+ เพิ่มพนักงาน</a>
         </div>
+    </div>
         <table>
             <thead>
                 <tr>

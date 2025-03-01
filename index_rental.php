@@ -30,14 +30,90 @@ if (!$result) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <title>รายการเช่ารถ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4cccc;
+            text-align: center;
+            margin: 20px;
+        }
+        h2 {
+            color: #cc0000;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #db4c4c;
+            text-align: center;
+        }
+        th {
+            background: #cc0000;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f4cccc;
+        }
+        tr:hover {
+            background: #db4c4c;
+            color: white;
+        }
+        a.button {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .add-btn {
+            background: #cc0000;
+        }
+        .edit-btn {
+            background: #db4c4c;
+        }
+        .delete-btn {
+            background: #cc0000;
+        }
+        a.button:hover {
+            opacity: 0.8;
+        }
+        .button-container {
+            margin: 10px 0;
+        }
+        .but{
+            display:flex;
+        }
+        .add-btn2{
+            background:grey;
+        }
+    </style>
 </head>
 <body style="margin:10px">
     <div class="text-center">
         <h2>📋 รายการเช่ารถ</h2>
     </div><br>
-    <div class="text-center">
-        <a href="insert_rental.php" class="btn btn-danger mb-3">➕ เพิ่มรายการเช่า</a>
-    </div><br>
+    <div class="but" style="display:flex">
+        <div class="button-container">
+        <a href="index.php" class="button add-btn2" style="background:grey">< ย้อนกลับ</a>
+    </div>
+    <div class="button-container">
+    <a href="insert_rental.php" class="button add-btn">+ เพิ่มข้อมูลการจอง</a>
+</div>
+    </div>
     <table class='table table-striped table-bordered'>
         <thead class="thead-dark">
             <tr>

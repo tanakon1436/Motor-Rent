@@ -86,14 +86,26 @@ if (!$result) {
         .button-container {
             margin: 10px 0;
         }
+        .but{
+            display:flex;
+        }
+        .add-btn2{
+            background:grey;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>รายการรถ</h2>
-        <div class="button-container">
-            <a href="insert_c_mc.php" class="button add-btn">+ เพิ่มรถ</a>
+        <div class="but" style="display:flex">
+            <div class="button-container">
+                <a href="index.php" class="button add-btn2" style="background:grey">< ย้อนกลับ</a>
+            </div>
+            <div class="button-container">
+                <a href="insert_c_mc.php" class="button add-btn">+ เพิ่มรถ</a>
+            </div>
         </div>
+        
         <table style="border-radius: 10px; overflow: hidden; border: 1px solid #ddd;">
             <thead>
                 <tr>

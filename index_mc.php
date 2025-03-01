@@ -63,6 +63,7 @@ if (!$result) {
             color: white;
         }
         a.button {
+            
             display: inline-block;
             padding: 8px 15px;
             margin: 5px;
@@ -86,13 +87,24 @@ if (!$result) {
         .button-container {
             margin: 10px 0;
         }
+        .add-btn2 {
+            background: grey;
+        }
+        .but{
+            display:flex;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>รายการลูกค้า</h2>
-        <div class="button-container">
-            <a href="insert_mc.php" class="button add-btn">+ เพิ่มลูกค้า</a>
+        <div class="but">
+            <div class="button-container">
+                <a href="index.php" class="button add-btn2">< ย้อนกลับ</a>
+            </div>
+            <div class="button-container">
+                <a href="insert_mc.php" class="button add-btn">+ เพิ่มลูกค้า</a>
+            </div>
         </div>
         <table>
             <thead>

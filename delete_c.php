@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 
     
     
-    $check_query = "SELECT * FROM customer WHERE cust_id = ?";
+    $check_query = "SELECT * FROM car WHERE car_id = ?";
     if ($check_stmt = mysqli_prepare($connection, $check_query)) {
         mysqli_stmt_bind_param($check_stmt, "i", $cust_id);
         mysqli_stmt_execute($check_stmt);
@@ -19,23 +19,23 @@ if (isset($_GET['id'])) {
         
         if (mysqli_num_rows($result) > 0) {
             
-            $query = "DELETE FROM customer WHERE cust_id = ?";
+            $query = "DELETE FROM car WHERE car_id = ?";
             if ($stmt = mysqli_prepare($connection, $query)) {
                 mysqli_stmt_bind_param($stmt, "i", $cust_id);
                 if (mysqli_stmt_execute($stmt)) {
-                    echo "<script>alert('ลบข้อมูลเรียบร้อย'); window.location='index_mc.php';</script>";
+                    echo "<script>alert('ลบข้อมูลเรียบร้อย'); window.location='index_c_mc.php';</script>";
                 } else {
-                    echo "<script>alert('เกิดข้อผิดพลาดในการลบข้อมูล'); window.location='index_mc.php';</script>";
+                    echo "<script>alert('เกิดข้อผิดพลาดในการลบข้อมูล'); window.location='index_c_mc.php';</script>";
                 }
                 mysqli_stmt_close($stmt);
             }
         } else {
-            echo "<script>alert('ไม่พบข้อมูลลูกค้าที่ต้องการลบ'); window.location='index_mc.php';</script>";
+            echo "<script>alert('ไม่พบข้อมูลลูกค้าที่ต้องการลบ'); window.location='index_c_mc.php';</script>";
         }
         mysqli_stmt_close($check_stmt);
     }
 } else {
-    echo "<script>alert('ไม่พบรหัสลูกค้า'); window.location='index_mc.php';</script>";
+    echo "<script>alert('ไม่พบรหัสลูกค้า'); window.location='index_c_mc.php';</script>";
 }
 
 

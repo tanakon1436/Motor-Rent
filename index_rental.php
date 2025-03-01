@@ -73,6 +73,7 @@ if (!$result) {
                         </span>
                     </td>
                     <td class="align-middle"><?= number_format($row['rent_total_price'], 2); ?> ฿</td>
+                    <td><a href="update_rep_mc.php?id=<?= $row['rep_id']; ?>" class="button edit-btn">แก้ไข</a></td>
                 </tr>
             <?php } ?>
         </tbody>

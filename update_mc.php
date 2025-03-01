@@ -51,8 +51,10 @@ if ($cust_id) {
         <div class="mb-2">
             <label class="form-label">เพศ</label>
             <select name="cust_gender" class="form-control" required>
-                <option value="male" <?= (isset($customer['cust_gender']) && $customer['cust_gender'] == 'male') ? 'selected' : '' ?>>ชาย</option>
-                <option value="female" <?= (isset($customer['cust_gender']) && $customer['cust_gender'] == 'female') ? 'selected' : '' ?>>หญิง</option>
+                <option value="ชาย" <?= (isset($customer['cust_gender']) && $customer['cust_gender'] == 'ชาย') ? 'selected' : '' ?>>ชาย</option>
+                <option value="หญิง" <?= (isset($customer['cust_gender']) && $customer['cust_gender'] == 'หญิง') ? 'selected' : '' ?>>หญิง</option>
+                <option value="อื่นๆ" <?= (isset($customer['cust_gender']) && $customer['cust_gender'] == 'อื่นๆ') ? 'selected' : '' ?>>อื่นๆ</option>
+
             </select>
         </div>
 

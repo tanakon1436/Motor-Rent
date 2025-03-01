@@ -1,49 +1,56 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Connect to the database
-    $connection = mysqli_connect('localhost', 'root', '', 'motor_cycle');
-    
-    if (!$connection) {
-        die('Database connection failed: ' . mysqli_connect_error());
+    $connection = new mysqli('localhost', 'root', '', 'motor_cycle');
+
+    if ($connection->connect_error) {
+        die('Database connection failed: ' . $connection->connect_error);
     }
 
-    mysqli_set_charset($connection, 'utf8');
+    $connection->set_charset('utf8');
 
-    // Retrieve and sanitize user inputs
-    $cust_id = mysqli_real_escape_string($connection, $_POST['cust_id']);
-    $cust_name = mysqli_real_escape_string($connection, $_POST['cust_fname']); // Match form field
-    $cust_phone = mysqli_real_escape_string($connection, $_POST['cust_tel']);   // Match form field
-    $cust_email = mysqli_real_escape_string($connection, $_POST['cust_email']);
-    $cust_gender = mysqli_real_escape_string($connection, $_POST['cust_gender']); // Added gender
-    $cust_address = mysqli_real_escape_string($connection, $_POST['cust_address']);
+    // ✅ แก้ชื่อให้ตรงกับ form fields
+    $cust_id = $connection->real_escape_string($_POST['cust_id']);
+    $cust_name = $connection->real_escape_string($_POST['cust_name']); 
+    $cust_phone = $connection->real_escape_string($_POST['cust_phone']); 
+    $cust_email = $connection->real_escape_string($_POST['cust_email']);
+    $cust_gender = $connection->real_escape_string($_POST['cust_gender']); 
+    $cust_address = $connection->real_escape_string($_POST['cust_address']);
 
-    // Check for empty values (basic validation)
+    // ✅ ตรวจสอบค่าว่าง
     if (empty($cust_id) || empty($cust_name) || empty($cust_phone) || empty($cust_email) || empty($cust_gender) || empty($cust_address)) {
         echo "<script>alert('กรุณากรอกข้อมูลให้ครบถ้วน'); window.history.back();</script>";
-        exit(); // Stop script execution
+        exit();
     }
 
-    // Check if customer ID already exists (Fixed table name)
-    $check_query = "SELECT cust_id FROM customer WHERE cust_id = '$cust_id'";
-    $check_result = mysqli_query($connection, $check_query);
+    // ✅ ตรวจสอบว่ามีรหัสลูกค้าซ้ำหรือไม่
+    $check_query = "SELECT cust_id FROM customer WHERE cust_id = ?";
+    $stmt = $connection->prepare($check_query);
+    $stmt->bind_param("s", $cust_id);
+    $stmt->execute();
+    $check_result = $stmt->get_result();
 
-    if (mysqli_num_rows($check_result) > 0) {
+    if ($check_result->num_rows > 0) {
         echo "<script>alert('รหัสลูกค้า ($cust_id) มีอยู่ในระบบแล้ว! กรุณาใช้รหัสอื่น'); window.history.back();</script>";
-        exit(); // Stop script execution
-    } else {
-        // Insert data into the database (Fixed query)
-        $query = "INSERT INTO customer (cust_id, cust_name, cust_phone, cust_email, cust_gender, cust_address) 
-                  VALUES ('$cust_id', '$cust_name', '$cust_phone', '$cust_email', '$cust_gender', '$cust_address')";
-
-        if (mysqli_query($connection, $query)) {
-            echo "<script>alert('เพิ่มลูกค้าสำเร็จ!'); window.location='index_mc.php';</script>";
-            exit();
-        } else {
-            echo "Query failed: " . mysqli_error($connection);
-        }
+        exit();
     }
 
-    mysqli_close($connection);
+    // ✅ ใช้ Prepared Statement ป้องกัน SQL Injection
+    $query = "INSERT INTO customer (cust_id, cust_name, cust_phone, cust_email, cust_gender, cust_address) 
+              VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param("ssssss", $cust_id, $cust_name, $cust_phone, $cust_email, $cust_gender, $cust_address);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('เพิ่มลูกค้าสำเร็จ!'); window.location='index_mc.php';</script>";
+        exit();
+    } else {
+        echo "Query failed: " . $stmt->error;
+    }
+
+    // ✅ ปิด Connection
+    $stmt->close();
+    $connection->close();
 }
 ?>
 
@@ -78,8 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    <label for="cust_gender">เพศลูกค้า</label>
                    <select id="cust_gender" name="cust_gender" class="form-control" required>
                        <option value="">--เลือกเพศ--</option>
-                       <option value="male">ชาย</option>
-                       <option value="female">หญิง</option>
+                       <option value="ชาย">ชาย</option>
+                       <option value="หญิง">หญิง</option>
+                       <option value="อื่นๆ">อื่นๆ</option>
                    </select>
                 </div>
                 <div class="form-group">
@@ -92,5 +100,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
-
-

@@ -38,10 +38,11 @@ $conn->close();
     <h3>แก้ไขรายการแจ้งซ่อม</h3>
     <form method="POST" action="update_rep_mc_back.php">
         
-        <div class="mb-2">
-            <label class="form-label">รหัสแจ้งซ้อม</label>
-            <input type="text" name="rep_id" class="form-control" value="<?= htmlspecialchars($repairment['rep_id'] ?? '') ?>" readonly>
+    <div class="mb-2">
+            <label class="form-label">รหัสใบแจ้งซ้อม</label>
+            <input type="text" name="rep_id" class="form-control" value="<?= htmlspecialchars($customer['rep_id'] ?? '') ?>" readonly>
         </div>
+
 
         <div class="mb-2">
             <label class="form-label">รหัสรถ</label>
@@ -80,4 +81,3 @@ $conn->close();
 </div>
 </body>
 </html>
-

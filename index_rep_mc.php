@@ -46,7 +46,7 @@ $result = mysqli_query($connection, $query);
                         <td><?php echo $row['rep_price']; ?></td>
                         <td><?php echo $row['rep_detail']; ?></td>
                         <td><a href="update_rep_mc.php?id=<?= $row['rep_id']; ?>" class="button edit-btn">แก้ไข</a></td>
-                        <td><a href="delete.php?id=<?= $row['rep_id']; ?>" class="button delete-btn" onclick="return confirm('คุณแน่ใจหรือไม่?')">ลบ</a></td>
+                        <td><a href="delete_rep_mc.php?id=<?= $row['rep_id']; ?>" class="button delete-btn" onclick="return confirm('คุณแน่ใจหรือไม่?')">ลบ</a></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>

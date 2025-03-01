@@ -49,6 +49,7 @@ if (!$result) {
                 <th>วันที่คืนรถ</th>
                 <th>สถานะ</th>
                 <th>ราคารวม (บาท)</th>
+                <th>การจัดการ</th>
             </tr>
         </thead>
         <tbody>
@@ -73,7 +74,9 @@ if (!$result) {
                         </span>
                     </td>
                     <td class="align-middle"><?= number_format($row['rent_total_price'], 2); ?> ฿</td>
-                    <td><a href="update_rep_mc.php?id=<?= $row['rep_id']; ?>" class="button edit-btn">แก้ไข</a></td>
+                    <td class="align-middle">
+                        <a href="update_rental.php?id=<?= $row['rent_id']; ?>" class="btn btn-warning btn-sm">✏️ แก้ไข</a>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>

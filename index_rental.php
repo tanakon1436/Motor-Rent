@@ -33,8 +33,11 @@ if (!$result) {
 </head>
 <body style="margin:10px">
     <div class="text-center">
-        <h3>📋 รายการเช่ารถ</h3>
-    </div>
+        <h2>📋 รายการเช่ารถ</h2>
+    </div><br>
+    <div class="text-center">
+        <a href="insert_rental.php" class="btn btn-danger mb-3">➕ เพิ่มรายการเช่า</a>
+    </div><br>
     <table class='table table-striped table-bordered'>
         <thead class="thead-dark">
             <tr>

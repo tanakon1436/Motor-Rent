@@ -2,6 +2,7 @@
 $connection = mysqli_connect('localhost', 'root', '', 'motor_cycle');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+$car_price = $_POST['car_price'] ?? null;
 
 if (!$connection) {
     die("🔴 Database Connection Failed: " . mysqli_connect_error());
@@ -15,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $car_plate = $_POST['car_plate'];
     $car_img = $_POST['car_img'];
 
-    $query = "INSERT INTO Car (car_name, car_status, car_detail, car_plate, car_img,car_price) 
-              VALUES ('$car_name', '$car_status', '$car_detail', '$car_plate', '$car_img')";
+    $query = "INSERT INTO Car (car_name, car_status, car_detail, car_plate, car_img, car_price) 
+              VALUES ('$car_name', '$car_status', '$car_detail', '$car_plate', '$car_img','$car_price')";
 
     if (mysqli_query($connection, $query)) {
         echo "<script>alert('เพิ่มรถสำเร็จ!'); window.location='index_c_mc.php'</script>";
@@ -45,9 +46,9 @@ mysqli_close($connection);
         <label for="car_status">สถานะรถ:</label>
         <select name="car_status" class="form-control" required>
             <option value="">-- เลือกสถานะ --</option>
-            <option value="Available">Available</option>
-            <option value="Rented">Rented</option>
-            <option value="In Maintenance">Maintenance</option>
+            <option value="Available">พร้อม</option>
+            <option value="Rented">ติดเช่า</option>
+            <option value="In Maintenance">ซ่อม</option>
         </select><br>
         
         <label>รายละเอียด</label>
@@ -56,15 +57,17 @@ mysqli_close($connection);
         <label>เลขป้ายทะเบียน</label>
         <input type="text" name="car_plate" required class="form-control">
         <br>
-        <label for="car_img">รูปรถ:</label>
-        <input type="file" name="car_img" id="car_img" accept="image/*" required>
-
+        <label>ราคา(บาท/วัน): </label>
+        <input type="number" name="car_price" required class="form-control">
+        <br>
+        <div class="mb-2">
+            <label class="form-label">รูป</label>
+            <input type="file" name="car_img" class="form-control">
+        </div>
         <br>
         <div class="text-center">
             <a href="index_c_mc.php" class="btn btn-secondary text-white">กลับสู่หน้าหลัก</a>
             <button name ="submit" type="submit" class="btn btn-danger">เพิ่มข้อมูล</button>
-            
-
         </div>
 
 

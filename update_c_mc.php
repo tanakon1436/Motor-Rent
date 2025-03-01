@@ -58,7 +58,9 @@ if ($car_id) {
             <label class="form-label">เลขป้ายทะเบียน</label>
             <input type="text" name="car_plate" class="form-control" value="<?= htmlspecialchars($car['car_plate'] ?? '') ?>" required>
         </div>
-
+        
+        <label>ราคา(บาท/วัน): </label>
+        <input type="number" name="car_price" required class="form-control">
 
         <div class="mb-2">
             <label class="form-label">อัปโหลดรูปใหม่</label>

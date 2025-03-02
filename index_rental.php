@@ -7,15 +7,15 @@ if (!$connection) {
 
 // คำสั่ง SQL ใช้ JOIN เพื่อดึงข้อมูลที่เกี่ยวข้อง
 $query = "
-SELECT Rental.*, 
-       Customer.cust_name, 
-       Car.car_name, 
-       Employee.emp_name 
+SELECT rental.*, 
+       customer.cust_name, 
+       car.car_name, 
+       employee.emp_name 
 FROM Rental
-JOIN Customer ON Rental.cust_id = Customer.cust_id
-JOIN Car ON Rental.car_id = Car.car_id
-JOIN Employee ON Rental.emp_id = Employee.emp_id
-ORDER BY Rental.rent_id DESC"; 
+JOIN customer ON rental.cust_id = customer.cust_id
+JOIN car ON rental.car_id = car.car_id
+JOIN employee ON rental.emp_id = employee.emp_id
+ORDER BY Rental.rent_id ASC"; // เรียงลำดับน้อยสุดไปมากสุด สามารถปรับเป็น DESC เพื่อเป็นมากสุดไปน้อยสุด
 
 $result = mysqli_query($connection, $query);
 
@@ -142,10 +142,10 @@ if (!$result) {
                     <td>
                         <span class="badge badge-<?php 
                             switch ($row['rent_status']) {
-                                case 'Pending': echo 'warning'; break;
-                                case 'Ongoing': echo 'primary'; break;
-                                case 'Completed': echo 'success'; break;
-                                case 'Canceled': echo 'danger'; break;
+                                case 'รอดำเนินการ': echo 'warning'; break;
+                                case 'กำลังดำเนินการ': echo 'primary'; break;
+                                case 'ดำเนินการเสร็จสิ้น': echo 'success'; break;
+                                case 'ยกเลิก': echo 'danger'; break;
                             } 
                         ?>">
                             <?= htmlspecialchars($row['rent_status']); ?>

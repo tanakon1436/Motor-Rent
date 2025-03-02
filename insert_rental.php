@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label>📆 วันที่คืนรถ:</label>
             <input type="date" name="rent_return_date" class="form-control" required>
         </div>
-
+        
         <button type="submit" class="btn btn-danger btn-block">✅ บันทึกการเช่า</button>
         <a href="index_rental.php" class="btn btn-secondary btn-block">⬅️ กลับ</a>
     </form>

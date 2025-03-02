@@ -23,7 +23,6 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>การชำระเงิน</title>
     <style>
-        /* Styles as previously defined */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4cccc;
@@ -64,6 +63,7 @@ if (!$result) {
             color: white;
         }
         a.button {
+            
             display: inline-block;
             padding: 8px 15px;
             margin: 5px;
@@ -87,13 +87,24 @@ if (!$result) {
         .button-container {
             margin: 10px 0;
         }
+        .add-btn2 {
+            background: grey;
+        }
+        .but{
+            display:flex;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>การชำระเงิน</h2>
-        <div class="button-container">
-            <a href="insert_paym_mc.php" class="button add-btn">+ เพิ่มรายการชำระเงิน</a>
+        <div class="but">
+            <div class="button-container">
+                <a href="index.php" class="button add-btn2">< ย้อนกลับ</a>
+            </div>
+            <div class="button-container">
+                <a href="insert_paym_mc.php" class="button add-btn">+ เพิ่มรายการชำระเงิน</a>
+            </div>
         </div>
         <table>
             <thead>

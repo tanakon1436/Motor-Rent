@@ -89,8 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    <label for="cust_address">ที่อยู่ลูกค้า</label>
                    <textarea id="cust_address" name="cust_address" class="form-control" required></textarea>
                 </div>
+                <button type="submit" class="btn btn-danger">เพิ่มลูกค้า</button>
                 <a href="index_mc.php" class="btn btn-secondary text-white">ย้อนกลับ</a>
-                <button type="submit" class="btn btn-primary">เพิ่มลูกค้า</button>
+                
             </form>
         </div>
     </div>

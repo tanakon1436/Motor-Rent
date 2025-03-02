@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_query($connection, "UPDATE Car SET car_status = 'Rented' WHERE car_id = $car_id_new");
         }
 
-        echo "<script>alert('✅ อัปเดตข้อมูลสำเร็จ!'); window.location.href='rental.php';</script>";
+        echo "<script>alert('✅ อัปเดตข้อมูลสำเร็จ!'); window.location.href='index_rental.php';</script>";
     } else {
         echo "<script>alert('❌ เกิดข้อผิดพลาด: " . mysqli_error($connection) . "');</script>";
     }

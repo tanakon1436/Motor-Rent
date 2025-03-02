@@ -82,9 +82,6 @@
                 </div>
             </div>
         </div>
-        <div class="ceo-pic text-center">
-            <img src="./img/char.jpg" alt="">
-        </div>
     </div>
 </body>
 </html>

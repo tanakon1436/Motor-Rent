@@ -74,9 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    <label for="rep_status">สถานะการแจ้งซ้อม</label>
                    <select id="rep_status" name="rep_status" class="form-control" required>
                        <option value="">--เลือกสถานะ--</option>
-                       <option value="Pending">pending</option>
-                       <option value="Progress">progress</option>
-                       <option value="Completed">completed</option>
+                       <option value="รอดำเนินการ">รอดำเนินการ</option>
+                       <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
+                       <option value="ดำเนินการเสร็จสิ้น">ดำเนินการเสร็จสิ้น</option>
                    </select>
                 </div>
                 <div class="form-group">

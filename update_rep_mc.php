@@ -57,9 +57,9 @@ $conn->close();
         <div class="mb-2">
             <label class="form-label">สถานะ</label>
             <select name="rep_status" class="form-control">
-                <option value="Pending" <?= ($repairment['rep_status'] ?? '') == 'Pending' ? 'selected' : '' ?>>Pending</option>
-                <option value="Progress" <?= ($repairment['rep_status'] ?? '') == 'Progress' ? 'selected' : '' ?>>Progress</option>
-                <option value="Completed" <?= ($repairment['rep_status'] ?? '') == 'Completed' ? 'selected' : '' ?>>Completed</option>
+                <option value="รอดำเนินการ" <?= ($repairment['rep_status'] ?? '') == 'รอดำเนินการ' ? 'selected' : '' ?>>รอดำเนินการ</option>
+                <option value="กำลังดำเนินการ" <?= ($repairment['rep_status'] ?? '') == 'กำลังดำเนินการ' ? 'selected' : '' ?>>กำลังดำเนินการ</option>
+                <option value="ดำเนินการเสร็จสิ้น" <?= ($repairment['rep_status'] ?? '') == 'ดำเนินการเสร็จสิ้น' ? 'selected' : '' ?>>ดำเนินการเสร็จสิ้นแล้ว</option>
             </select>
         </div>
 

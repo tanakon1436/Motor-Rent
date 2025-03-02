@@ -44,8 +44,9 @@ if ($car_id) {
         <div class="mb-2">
             <label class="form-label">สถานะ</label>
             <select name="car_status" class="form-control" required>
-                <option value="available" <?= (isset($car['car_status']) && $car['car_status'] == 'available') ? 'selected' : '' ?>>Available</option>
-                <option value="rented" <?= (isset($car['car_status']) && $car['car_status'] == 'rented') ? 'selected' : '' ?>>Rented</option>
+                <option value="ว่าง" <?= (isset($car['car_status']) && $car['car_status'] == 'ว่าง') ? 'selected' : '' ?>>ว่าง</option>
+                <option value="ถูกเช่า" <?= (isset($car['car_status']) && $car['car_status'] == 'ถูกเช่า') ? 'selected' : '' ?>>กำลังเช่า</option>
+                <option value="กำลังซ่อมบำรุง" <?= (isset($car['car_status']) && $car['car_status'] == 'กำลังซ่อมบำรุง') ? 'selected' : '' ?>>กำลังซ่อม</option>
             </select>
         </div>
 

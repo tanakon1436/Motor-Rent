@@ -49,7 +49,7 @@ if ($paym_id) {
         <div class="mb-2">
             <label class="form-label">สถานะ</label>
             <select name="paym_status" class="form-control" required>
-                <option value="paid" <?= (isset($payment['paym_status']) && $payment['paym_status'] == 'paid') ? 'selected' : '' ?>>ชำระแล้ว</option>
+                <option value="ชำระเงินแล้ว" <?= (isset($payment['paym_status']) && $payment['paym_status'] == 'ชำระเงินแล้ว') ? 'selected' : '' ?>>ชำระแล้ว</option>
                 <option value="รอดำเนินการ" <?= (isset($payment['paym_status']) && $payment['paym_status'] == 'รอดำเนินการ') ? 'selected' : '' ?>>รอชำระ</option>
             </select>
         </div>

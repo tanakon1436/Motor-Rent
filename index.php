@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarun MotorBike Rental</title>
+    <title>PSU MotorBike Rental</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <style>
         body {
@@ -17,7 +17,7 @@
         }
         .btn-custom {
             width: 150px;
-            height: 40px;
+            height: 50px;
             font-size: 18px;
             text-align: center;
             display: flex;
@@ -47,7 +47,7 @@
 <body>
     <div class="container">
         <div class="heading">
-            <h2>Sarun MotorBike Rental</h2>
+            <h2>PSU MotorBike Rental</h2>
         </div>
 
         <div class="row">

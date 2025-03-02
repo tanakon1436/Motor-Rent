@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    <label for="emp_phone">เบอร์โทรพนักงาน</label>
                    <input id="emp_phone" name="emp_phone" type="tel" class="form-control" required>
                 </div>
-                <a href="index_c_mc.php" class="btn btn-secondary text-white">กลับสู่หน้าหลัก</a>
+                <a href="index_emp_mc.php" class="btn btn-secondary text-white">กลับสู่หน้าหลัก</a>
                 <button type="submit" class="btn btn-primary">เพิ่มพนักงาน</button>
             </form>
         </div>

@@ -153,7 +153,7 @@ if (!$result) {
                     </td>
                     <td ><?= number_format($row['rent_total_price'], 2); ?> ฿</td>
                     <td >
-                        <a href="update_rental.php?id=<?= $row['rent_id']; ?>" class="btn btn-warning btn-sm">✏️ แก้ไข</a>
+                        <a href="update_rental.php?id=<?= $row['rent_id']; ?>" class="btn btn-danger btn-block">✏️ แก้ไข</a>
                     </td>
                 </tr>
             <?php } ?>

@@ -9,14 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connection->set_charset('utf8');
 
     // รับค่าจากฟอร์ม
-    $paym_id = $connection->real_escape_string($_POST['paym_id']);
     $rent_id = $connection->real_escape_string($_POST['rent_id']);
     $paym_date = $connection->real_escape_string($_POST['paym_date']);
     $paym_total_price = $connection->real_escape_string($_POST['paym_total_price']);
     $paym_status = $connection->real_escape_string($_POST['paym_status']);
 
     // ตรวจสอบค่าที่ว่าง
-    if (empty($paym_id) || empty($rent_id) || empty($paym_date) || empty($paym_total_price) || empty($paym_status)) {
+    if ( empty($rent_id) || empty($paym_date) || empty($paym_total_price) || empty($paym_status)) {
         echo "<script>alert('กรุณากรอกข้อมูลให้ครบถ้วน'); window.history.back();</script>";
         exit();
     }
@@ -60,10 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h3 class="text-center">เพิ่มรายการชำระเงิน</h3>
             <form action="" method="post">
                 <div class="form-group">
-                   <label for="paym_id">รหัสการชำระเงิน</label>
-                   <input id="paym_id" name="paym_id" type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
                    <label for="rent_id">รหัสการเช่า</label>
                    <input id="rent_id" name="rent_id" type="text" class="form-control" required>
                 </div>
@@ -79,9 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    <label for="paym_status">สถานะการชำระเงิน</label>
                    <select id="paym_status" name="paym_status" class="form-control" required>
                        <option value="">--เลือกสถานะ--</option>
-                       <option value="รอดำเนินการ">Pending</option>
-                       <option value="ชำระเงินแล้ว">Paid</option>
-                       <option value="ชำระเงินไม่สำเร็จ">Failed</option>
+                       <option value="รอดำเนินการ">รอดำเนินการ</option>
+                       <option value="ชำระเงินแล้ว">ชำระเงินแล้ว</option>
+                       <option value="ชำระเงินไม่สำเร็จ">ชำระเงินไม่สำเร็จ</option>
                    </select>
                 </div>
                 <a href="index_paym_mc.php" class="btn btn-secondary">ย้อนกลับ</a>

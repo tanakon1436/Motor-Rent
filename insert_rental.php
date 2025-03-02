@@ -6,13 +6,13 @@ if (!$connection) {
 }
 
 // ดึงข้อมูลลูกค้า
-$customers = mysqli_query($connection, "SELECT * FROM Customer");
+$customers = mysqli_query($connection, "SELECT * FROM customer");
 
 // ดึงข้อมูลรถที่สถานะ Available เท่านั้น
-$cars = mysqli_query($connection, "SELECT * FROM Car WHERE car_status = 'Available'");
+$cars = mysqli_query($connection, "SELECT * FROM car WHERE car_status = 'ว่าง'");
 
 // ดึงข้อมูลพนักงาน
-$employees = mysqli_query($connection, "SELECT * FROM Employee");
+$employees = mysqli_query($connection, "SELECT * FROM employee");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cust_id = $_POST['cust_id'];
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rent_return_date = $_POST['rent_return_date'];
 
     // ดึงราคาของรถที่เลือก
-    $car_query = mysqli_query($connection, "SELECT car_price FROM Car WHERE car_id = $car_id");
+    $car_query = mysqli_query($connection, "SELECT car_price FROM car WHERE car_id = $car_id");
     $car = mysqli_fetch_assoc($car_query);
     $car_price = $car['car_price'];
 
@@ -37,14 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // เพิ่มข้อมูลการเช่า
     $insert_rent = "
-        INSERT INTO Rental (cust_id, car_id, emp_id, rent_start_date, rent_return_date, rent_status, rent_total_price)
-        VALUES ($cust_id, $car_id, $emp_id, '$rent_start_date', '$rent_return_date', 'Ongoing', $rent_total_price)
+        INSERT INTO rental (cust_id, car_id, emp_id, rent_start_date, rent_return_date, rent_status, rent_total_price)
+        VALUES ($cust_id, $car_id, $emp_id, '$rent_start_date', '$rent_return_date', 'กำลังดำเนินการ', $rent_total_price)
     ";
     
     if (mysqli_query($connection, $insert_rent)) {
-        // อัปเดตสถานะรถเป็น "Rented"
-        mysqli_query($connection, "UPDATE Car SET car_status = 'Rented' WHERE car_id = $car_id");
-        echo "<script>alert('✅ เพิ่มข้อมูลเช่าสำเร็จ!'); window.location.href='rental.php';</script>";
+        // อัปเดตสถานะรถเป็น "ถูกเช่า"
+        mysqli_query($connection, "UPDATE car SET car_status = 'ถูกเช่า' WHERE car_id = $car_id");
+        echo "<script>alert('✅ เพิ่มข้อมูลเช่าสำเร็จ!'); window.location.href='index_rental.php';</script>";
     } else {
         echo "<script>alert('❌ เกิดข้อผิดพลาด: " . mysqli_error($connection) . "');</script>";
     }
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="date" name="rent_return_date" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-success btn-block">✅ บันทึกการเช่า</button>
+        <button type="submit" class="btn btn-danger btn-block">✅ บันทึกการเช่า</button>
         <a href="index_rental.php" class="btn btn-secondary btn-block">⬅️ กลับ</a>
     </form>
 </body>

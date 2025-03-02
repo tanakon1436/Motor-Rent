@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connection->set_charset('utf8');
 
     // ✅ แก้ชื่อให้ตรงกับ form fields
-    $cust_id = $connection->real_escape_string($_POST['cust_id']);
     $cust_name = $connection->real_escape_string($_POST['cust_name']); 
     $cust_phone = $connection->real_escape_string($_POST['cust_phone']); 
     $cust_email = $connection->real_escape_string($_POST['cust_email']);
@@ -18,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cust_address = $connection->real_escape_string($_POST['cust_address']);
 
     // ✅ ตรวจสอบค่าว่าง
-    if (empty($cust_id) || empty($cust_name) || empty($cust_phone) || empty($cust_email) || empty($cust_gender) || empty($cust_address)) {
+    if ( empty($cust_name) || empty($cust_phone) || empty($cust_email) || empty($cust_gender) || empty($cust_address)) {
         echo "<script>alert('กรุณากรอกข้อมูลให้ครบถ้วน'); window.history.back();</script>";
         exit();
     }
@@ -65,10 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container mt-5">
         <div class="col-md-6 mx-auto">
             <form action="" method="post">
-                <div class="form-group">
-                   <label for="cust_id">รหัสลูกค้า</label>
-                   <input id="cust_id" name="cust_id" type="text" class="form-control" required>
-                </div>
                 <div class="form-group">
                    <label for="cust_name">ชื่อลูกค้า</label>
                    <input id="cust_name" name="cust_name" type="text" class="form-control" required>

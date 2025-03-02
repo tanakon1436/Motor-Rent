@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="date" name="rent_return_date" class="form-control" value="<?= $rental['rent_return_date']; ?>" required>
         </div>
 
-        <button type="submit" class="btn btn-warning btn-block">✅ อัปเดตข้อมูล</button>
+        <button type="submit" class="btn btn-danger btn-block">✅ อัปเดตข้อมูล</button>
         <a href="index_rental.php" class="btn btn-secondary btn-block">⬅️ กลับ</a>
     </form>
 </body>

@@ -114,6 +114,7 @@ if (!$result) {
                     <th>สถานะ</th>
                     <th>รายละเอียด</th>
                     <th>เลขป้ายทะเบียน</th>
+                    <th>ราคา</th>
                     <th>รูป</th>
                     <th>แก้ไข</th>
                     <th>ลบ</th>
@@ -127,6 +128,7 @@ if (!$result) {
                         <td class="align-middle"><?= htmlspecialchars($row['car_status']); ?></td>
                         <td class="align-middle"><?= htmlspecialchars($row['car_detail']); ?></td>
                         <td class="align-middle"><?= htmlspecialchars($row['car_plate']); ?></td>
+                        <td ><?= number_format($row['car_price'], 2); ?> ฿</td>
                         <td class="align-middle">
                             <img src="img/<?= htmlspecialchars($row['car_img']); ?>" alt="Car Image" style="max-width: 100px; height: auto;">
                         </td>

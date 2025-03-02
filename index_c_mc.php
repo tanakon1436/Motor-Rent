@@ -134,7 +134,7 @@ if (!$result) {
                             <a href="update_c_mc.php?id=<?= $row['car_id']; ?>" class="button edit-btn">แก้ไข</a>
                         </td>
                         <td>
-                            <a href="delete.php?id=<?= $row['car_id']; ?>" class="button delete-btn" onclick="return confirm('คุณแน่ใจหรือไม่?')">ลบ</a>
+                            <a href="delete_c_mc.php?id=<?= $row['car_id']; ?>" class="button delete-btn" onclick="return confirm('คุณแน่ใจหรือไม่?')">ลบ</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

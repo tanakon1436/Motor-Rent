@@ -11,15 +11,14 @@ if (isset($_GET['id'])) {
 
     
     
-    $check_query = "SELECT * FROM payment WHERE paym_id = ?";
+    $check_query = "SELECT * FROM Payment WHERE paym_id = ?";
     if ($check_stmt = mysqli_prepare($connection, $check_query)) {
-        mysqli_stmt_bind_param($check_stmt, "i", $cust_id);
+        mysqli_stmt_bind_param($check_stmt, "i", $paym_id);
         mysqli_stmt_execute($check_stmt);
         $result = mysqli_stmt_get_result($check_stmt);
         
         if (mysqli_num_rows($result) > 0) {
-            
-            $query = "DELETE FROM payment WHERE paym_id = ?";
+            $query = "DELETE FROM Payment WHERE paym_id = ?";
             if ($stmt = mysqli_prepare($connection, $query)) {
                 mysqli_stmt_bind_param($stmt, "i", $paym_id);
                 if (mysqli_stmt_execute($stmt)) {
@@ -30,12 +29,12 @@ if (isset($_GET['id'])) {
                 mysqli_stmt_close($stmt);
             }
         } else {
-            echo "<script>alert('ไม่พบข้อมูลลูกค้าที่ต้องการลบ'); window.location='index_paym_mc.php';</script>";
+            echo "<script>alert('ไม่พบข้อมูลการชำระเงิน'); window.location='index_paym_mc.php';</script>";
         }
         mysqli_stmt_close($check_stmt);
     }
 } else {
-    echo "<script>alert('ไม่พบรหัสลูกค้า'); window.location='index_paym_mc.php';</script>";
+    echo "<script>alert('ไม่พบรหัสการชำระเงิน'); window.location='index_c_mc.php';</script>";
 }
 
 

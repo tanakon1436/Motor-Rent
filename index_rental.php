@@ -102,7 +102,9 @@ if (!$result) {
         }
     </style>
 </head>
-<body style="margin:10px">
+<body>
+<div class="container">
+
     <div class="text-center">
         <h2>📋 รายการเช่ารถ</h2>
     </div><br>
@@ -114,7 +116,7 @@ if (!$result) {
     <a href="insert_rental.php" class="button add-btn">+ เพิ่มข้อมูลการจอง</a>
 </div>
     </div>
-    <table class='table table-striped table-bordered'>
+    <table >
         <thead class="thead-dark">
             <tr>
                 <th>รหัสเช่า</th>
@@ -130,14 +132,14 @@ if (!$result) {
         </thead>
         <tbody>
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <tr class="align-middle">
-                    <td class="align-middle"><?= htmlspecialchars($row['rent_id']); ?></td>
-                    <td class="align-middle"><?= htmlspecialchars($row['cust_name']); ?></td>
-                    <td class="align-middle"><?= htmlspecialchars($row['car_name']); ?></td>
-                    <td class="align-middle"><?= htmlspecialchars($row['emp_name']); ?></td>
-                    <td class="align-middle"><?= htmlspecialchars($row['rent_start_date']); ?></td>
-                    <td class="align-middle"><?= htmlspecialchars($row['rent_return_date']); ?></td>
-                    <td class="align-middle">
+                <tr >
+                    <td><?= htmlspecialchars($row['rent_id']); ?></td>
+                    <td><?= htmlspecialchars($row['cust_name']); ?></td>
+                    <td><?= htmlspecialchars($row['car_name']); ?></td>
+                    <td><?= htmlspecialchars($row['emp_name']); ?></td>
+                    <td><?= htmlspecialchars($row['rent_start_date']); ?></td>
+                    <td><?= htmlspecialchars($row['rent_return_date']); ?></td>
+                    <td>
                         <span class="badge badge-<?php 
                             switch ($row['rent_status']) {
                                 case 'Pending': echo 'warning'; break;
@@ -149,14 +151,15 @@ if (!$result) {
                             <?= htmlspecialchars($row['rent_status']); ?>
                         </span>
                     </td>
-                    <td class="align-middle"><?= number_format($row['rent_total_price'], 2); ?> ฿</td>
-                    <td class="align-middle">
+                    <td ><?= number_format($row['rent_total_price'], 2); ?> ฿</td>
+                    <td >
                         <a href="update_rental.php?id=<?= $row['rent_id']; ?>" class="btn btn-warning btn-sm">✏️ แก้ไข</a>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
+</div>
 </body>
 </html>
 

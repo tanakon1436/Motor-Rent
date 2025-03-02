@@ -87,6 +87,7 @@ $result = mysqli_query($connection, $query);
     </style>
 </head>
 <body>
+    <div class="container"></div>
 <div class="but" style="display:flex">
 
 <div class="button-container">

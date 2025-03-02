@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 
     
     
-    $check_query = "SELECT * FROM repairmant WHERE rep_id = ?";
+    $check_query = "SELECT * FROM Repairmant WHERE rep_id = ?";
     if ($check_stmt = mysqli_prepare($connection, $check_query)) {
         mysqli_stmt_bind_param($check_stmt, "i", $rep_id);
         mysqli_stmt_execute($check_stmt);
@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
         
         if (mysqli_num_rows($result) > 0) {
             
-            $query = "DELETE FROM repairment WHERE rep_id = ?";
+            $query = "DELETE FROM Repairment WHERE rep_id = ?";
             if ($stmt = mysqli_prepare($connection, $query)) {
                 mysqli_stmt_bind_param($stmt, "i", $rep_id);
                 if (mysqli_stmt_execute($stmt)) {
@@ -30,12 +30,12 @@ if (isset($_GET['id'])) {
                 mysqli_stmt_close($stmt);
             }
         } else {
-            echo "<script>alert('ไม่พบข้อมูลลูกค้าที่ต้องการลบ'); window.location='index_rep_mc.php';</script>";
+            echo "<script>alert('ไม่พบข้อมูลเเจ้งซ่อม'); window.location='index_rep_mc.php';</script>";
         }
         mysqli_stmt_close($check_stmt);
     }
 } else {
-    echo "<script>alert('ไม่พบรหัสลูกค้า'); window.location='index_rep_mc.php';</script>";
+    echo "<script>alert('ไม่พบรหัส'); window.location='index_rep_mc.php';</script>";
 }
 
 

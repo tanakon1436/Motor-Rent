@@ -79,9 +79,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    <label for="paym_status">สถานะการชำระเงิน</label>
                    <select id="paym_status" name="paym_status" class="form-control" required>
                        <option value="">--เลือกสถานะ--</option>
-                       <option value="Pending">Pending</option>
-                       <option value="Paid">Paid</option>
-                       <option value="Failed">Failed</option>
+                       <option value="รอดำเนินการ">Pending</option>
+                       <option value="ชำระเงินแล้ว">Paid</option>
+                       <option value="ชำระเงินไม่สำเร็จ">Failed</option>
                    </select>
                 </div>
                 <a href="index_paym_mc.php" class="btn btn-secondary">ย้อนกลับ</a>

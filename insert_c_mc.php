@@ -46,9 +46,9 @@ mysqli_close($connection);
         <label for="car_status">สถานะรถ:</label>
         <select name="car_status" class="form-control" required>
             <option value="">-- เลือกสถานะ --</option>
-            <option value="Available">พร้อม</option>
-            <option value="Rented">ติดเช่า</option>
-            <option value="In Maintenance">ซ่อม</option>
+            <option value="ว่าง">ว่าง</option>
+            <option value="ถูกเช่า">กำลังเช่า</option>
+            <option value="กำลังซ่อมบำรุง">กำลังซ่อม</option>
         </select><br>
         
         <label>รายละเอียด</label>

@@ -50,7 +50,7 @@ if ($paym_id) {
             <label class="form-label">สถานะ</label>
             <select name="paym_status" class="form-control" required>
                 <option value="paid" <?= (isset($payment['paym_status']) && $payment['paym_status'] == 'paid') ? 'selected' : '' ?>>ชำระแล้ว</option>
-                <option value="pending" <?= (isset($payment['paym_status']) && $payment['paym_status'] == 'pending') ? 'selected' : '' ?>>รอชำระ</option>
+                <option value="รอดำเนินการ" <?= (isset($payment['paym_status']) && $payment['paym_status'] == 'รอดำเนินการ') ? 'selected' : '' ?>>รอชำระ</option>
             </select>
         </div>
         <div class="mt-3 text-center">

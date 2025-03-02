@@ -1,48 +1,44 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Connect to the database
-    $connection = mysqli_connect('localhost', 'root', '', 'motor_cycle');
+    // เชื่อมต่อฐานข้อมูล
+    $connection = new mysqli('localhost', 'root', '', 'motor_cycle');
     
-    if (!$connection) {
-        die('Database connection failed: ' . mysqli_connect_error());
+    if ($connection->connect_error) {
+        die("Database connection failed: " . $connection->connect_error);
     }
+    $connection->set_charset('utf8');
 
-    mysqli_set_charset($connection, 'utf8');
+    // รับค่าจากฟอร์ม
+    $paym_id = $connection->real_escape_string($_POST['paym_id']);
+    $rent_id = $connection->real_escape_string($_POST['rent_id']);
+    $paym_date = $connection->real_escape_string($_POST['paym_date']);
+    $paym_total_price = $connection->real_escape_string($_POST['paym_total_price']);
+    $paym_status = $connection->real_escape_string($_POST['paym_status']);
 
-    // Retrieve and sanitize user inputs
-    $rep_id = mysqli_real_escape_string($connection, $_POST['paym_id']);
-    $car_id = mysqli_real_escape_string($connection, $_POST['rent_id']);
-    $emp_id = mysqli_real_escape_string($connection, $_POST['paym_date']);
-    $rep_status = mysqli_real_escape_string($connection, $_POST['paym_total_price']);
-    $rep_price = mysqli_real_escape_string($connection, $_POST['paym_status']);
-   
-    // Check for empty values (basic validation)
+    // ตรวจสอบค่าที่ว่าง
     if (empty($paym_id) || empty($rent_id) || empty($paym_date) || empty($paym_total_price) || empty($paym_status)) {
         echo "<script>alert('กรุณากรอกข้อมูลให้ครบถ้วน'); window.history.back();</script>";
-        exit(); // Stop script execution
+        exit();
     }
 
-    // Check if repair ID already exists
-    $check_query = "SELECT paym_id FROM payment WHERE paym_id = '$paym_id'";
-    $check_result = mysqli_query($connection, $check_query);
+    // ตรวจสอบว่ารหัสซ้ำหรือไม่
+    $check_query = $connection->query("SELECT paym_id FROM payment WHERE paym_id = '$paym_id'");
+    if ($check_query->num_rows > 0) {
+        echo "<script>alert('รหัสชำระเงิน ($paym_id) มีอยู่ในระบบแล้ว! กรุณาใช้รหัสอื่น'); window.history.back();</script>";
+        exit();
+    }
 
-    if (mysqli_num_rows($check_result) > 0) {
-        echo "<script>alert('รหัสแจ้งซ้อม ($paym_id) มีอยู่ในระบบแล้ว! กรุณาใช้รหัสอื่น'); window.history.back();</script>";
-        exit(); // Stop script execution
+    // บันทึกข้อมูลลงฐานข้อมูล
+    $query = "INSERT INTO payment (paym_id, rent_id, paym_date, paym_total_price, paym_status) 
+              VALUES ('$paym_id', '$rent_id', '$paym_date', '$paym_total_price', '$paym_status')";
+
+    if ($connection->query($query)) {
+        echo "<script>alert('เพิ่มรายการชำระเงินสำเร็จ!'); window.location='index_paym_mc.php';</script>";
     } else {
-        // Insert data into the database
-        $query = "INSERT INTO payment (paym_id, rent_id, paym_date, payment_total_price,paym_status) 
-                  VALUES ('$paym_id', '$rent_id', '$paym_date', '$paym_total_price','$rep_status')";
-
-        if (mysqli_query($connection, $query)) {
-            echo "<script>alert('เพิ่มรายการค้าสำเร็จ!'); window.location='index_paym_mc.php';</script>";
-            exit();
-        } else {
-            echo "Query failed: " . mysqli_error($connection);
-        }
+        echo "<script>alert('เกิดข้อผิดพลาด: " . $connection->error . "'); window.history.back();</script>";
     }
 
-    mysqli_close($connection);
+    $connection->close();
 }
 ?>
 
@@ -50,12 +46,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>เพิ่มรายรายการชำระเงิน</title>
+    <title>เพิ่มรายการชำระเงิน</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f7f7f7; }
+        .container { margin-top: 50px; }
+        .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="col-md-6 mx-auto">
+    <div class="container">
+        <div class="col-md-6 mx-auto form-container">
+            <h3 class="text-center">เพิ่มรายการชำระเงิน</h3>
             <form action="" method="post">
                 <div class="form-group">
                    <label for="paym_id">รหัสการชำระเงิน</label>
@@ -70,20 +72,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    <input id="paym_date" name="paym_date" type="date" class="form-control" required>
                 </div>
                 <div class="form-group">
-                   <label for="paym_total_price">วันที่ชำระเงิน</label>
+                   <label for="paym_total_price">ราคารวมที่ต้องชำระ</label>
                    <input id="paym_total_price" name="paym_total_price" type="number" class="form-control" required>
                 </div>
                 <div class="form-group">
-                   <label for="paym_status">สถานะการแจ้งซ้อม</label>
+                   <label for="paym_status">สถานะการชำระเงิน</label>
                    <select id="paym_status" name="paym_status" class="form-control" required>
                        <option value="">--เลือกสถานะ--</option>
-                       <option value="Pending">pending</option>
-                       <option value="Paid">paid</option>
-                       <option value="Failed">failed</option>
+                       <option value="Pending">Pending</option>
+                       <option value="Paid">Paid</option>
+                       <option value="Failed">Failed</option>
                    </select>
                 </div>
-                
-                <button type="submit" class="btn btn-primary">เพิ่มรายการแจ้งซ้อม</button>
+                <a href="index_paym_mc.php" class="btn btn-secondary">ย้อนกลับ</a>
+                <button type="submit" class="btn btn-primary">เพิ่มรายการชำระเงิน</button>
             </form>
         </div>
     </div>

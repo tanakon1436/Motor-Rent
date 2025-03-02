@@ -13,11 +13,11 @@
             margin-top: 50px;
         }
         .button-container {
-            margin: 10px;
+            margin: 0px;
         }
         .btn-custom {
-            width: 200px;
-            height: 60px;
+            width: 150px;
+            height: 40px;
             font-size: 18px;
             text-align: center;
             display: flex;
@@ -74,6 +74,11 @@
             <div class="col-md-2 button-container">
                 <div class="btn btn-danger btn-custom">
                     <a href="index_rental.php">ข้อมูลการเช่า</a>
+                </div>
+            </div>
+            <div class="col-md-2 button-container">
+                <div class="btn btn-primary btn-custom">
+                    <a href="index_paym_mc.php">ข้อมูลการชำระเงิน</a>
                 </div>
             </div>
         </div>

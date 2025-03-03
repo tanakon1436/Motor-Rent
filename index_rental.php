@@ -113,7 +113,7 @@ if (!$result) {
         <a href="index.php" class="button add-btn2" style="background:grey">< ย้อนกลับ</a>
     </div>
     <div class="button-container">
-    <a href="insert_rental.php" class="button add-btn">+ เพิ่มข้อมูลการจอง</a>
+    <a href="insert_rental.php" class="button add-btn">+ เพิ่มข้อมูลการเช่ารถ</a>
 </div>
     </div>
     <table >
